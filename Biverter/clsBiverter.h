@@ -6,7 +6,7 @@
 #include<iostream>
 #include<unordered_map>
 #include<string>
-using namespace std;
+
 
 
 
@@ -21,25 +21,25 @@ class clsBiverter
 			Extendable = 1 , NotExtendable = 2
 		};
 
-		unordered_map<string, char> _hexMap;
+		std::unordered_map<std::string, char> _hexMap;
 
-		unordered_map<string, char> _octalMap;
+		std::unordered_map<std::string, char> _octalMap;
 
-		enSize _checkNumberSize(string);
+		enSize _checkNumberSize(std::string);
 		
-		string _extendNumber(string);
+		std::string _extendNumber(std::string);
 
-		string _convertToDecimal(string);
+		std::string _convertToDecimal(std::string);
 
-		string _convertToHexadecimal(string);
+		std::string _convertToHexadecimal(std::string);
 
-		string _convertToOctal(string);
+		std::string _convertToOctal(std::string);
 
-		string _shiftLeftLogical(string);
+		std::string _shiftLeftLogical(std::string);
 
-		string _shiftRightLogical(string);
+		std::string _shiftRightLogical(std::string);
 
-		bool _checkValidInput(string);
+		bool _checkValidInput(std::string);
 
 		bool _isStrangeInput(char);
 
@@ -54,15 +54,15 @@ class clsBiverter
 		~clsBiverter(void);
 		
 	
-		string convertToDecimal(string);
+		std::string convertToDecimal(std::string);
 
-		string convertToHexadecimal(string);
+		std::string convertToHexadecimal(std::string);
 
-		string convertToOctal(string);
+		std::string convertToOctal(std::string);
 		
-		string shiftLeftLogical(string);
+		std::string shiftLeftLogical(std::string);
 
-		string shiftRightLogical(string);
+		std::string shiftRightLogical(std::string);
 
 };
 
@@ -86,20 +86,20 @@ clsBiverter::~clsBiverter() {
 
 
 
-clsBiverter::enSize clsBiverter::_checkNumberSize(string number) {
+clsBiverter::enSize clsBiverter::_checkNumberSize(std::string number) {
 
 	const short sizeInBits = 32;
 
 	return (number.length() == sizeInBits) ? clsBiverter::enSize::NotExtendable : clsBiverter::Extendable;
 }
 
-string clsBiverter::_extendNumber(string number) {
+std::string clsBiverter::_extendNumber(std::string number) {
 
 	const short sizeInBits = 32;
 
 	short numberOfZeros = 32 - number.length();
 	
-	string extendedNumber = "";
+	std::string extendedNumber = "";
 
 	while (numberOfZeros--) {
 		extendedNumber += '0';
@@ -110,7 +110,7 @@ string clsBiverter::_extendNumber(string number) {
 	return extendedNumber;
 }
 
-bool clsBiverter::_checkValidInput(string number) {
+bool clsBiverter::_checkValidInput(std::string number) {
 
 	if (number == "") {
 		return false;
@@ -163,11 +163,11 @@ void clsBiverter::_initializeOctMapValues() {
 
 
 
-string clsBiverter::convertToDecimal(string number) {
+std::string clsBiverter::convertToDecimal(std::string number) {
 	return this->_convertToDecimal(number);
 }
 
-string clsBiverter::_convertToDecimal(string number) {
+std::string clsBiverter::_convertToDecimal(std::string number) {
 
 	if (!this->_checkValidInput(number)) {
 		return "ERROR";
@@ -192,14 +192,14 @@ string clsBiverter::_convertToDecimal(string number) {
 	}
 
 
-	return to_string(decimalValue);
+	return std::to_string(decimalValue);
 }
 
-string clsBiverter::convertToHexadecimal(string number) {
+std::string clsBiverter::convertToHexadecimal(std::string number) {
 	return this->_convertToHexadecimal(number);
 }
 
-string clsBiverter::_convertToHexadecimal(string number) {
+std::string clsBiverter::_convertToHexadecimal(std::string number) {
 
 	if (!this->_checkValidInput(number)) {
 		return "ERROR";
@@ -215,8 +215,8 @@ string clsBiverter::_convertToHexadecimal(string number) {
 
 
 
-	string numberInHex = "";
-	string nibble = "";
+	std::string numberInHex = "";
+	std::string nibble = "";
 
 	for (int i = 0; i < number.length() ; i++) {
 
@@ -233,11 +233,11 @@ string clsBiverter::_convertToHexadecimal(string number) {
 	return numberInHex;
 }
 
-string clsBiverter::convertToOctal(string number) {
+std::string clsBiverter::convertToOctal(std::string number) {
 	return this->_convertToOctal(number);
 }
 
-string clsBiverter::_convertToOctal(string number) {
+std::string clsBiverter::_convertToOctal(std::string number) {
 
 	if (!this->_checkValidInput(number)) {
 		return "ERROR";
@@ -250,8 +250,8 @@ string clsBiverter::_convertToOctal(string number) {
 	}
 
 
-	string numberInOctal = "";
-	string triad = "";
+	std::string numberInOctal = "";
+	std::string triad = "";
 
 
 	for (int i = 0; i < number.length(); i++) {
@@ -271,11 +271,11 @@ string clsBiverter::_convertToOctal(string number) {
 
 
 
-string clsBiverter::shiftLeftLogical(string number) {
+std::string clsBiverter::shiftLeftLogical(std::string number) {
 	return this->_shiftLeftLogical(number);
 }
 
-string clsBiverter::_shiftLeftLogical(string number) {
+std::string clsBiverter::_shiftLeftLogical(std::string number) {
 
 	if (!this->_checkValidInput(number)) {
 		return "ERROR";
@@ -293,11 +293,11 @@ string clsBiverter::_shiftLeftLogical(string number) {
 	return number;
 }
 
-string clsBiverter::shiftRightLogical(string number) {
+std::string clsBiverter::shiftRightLogical(std::string number) {
 	return this->_shiftRightLogical(number);
 }
 
-string clsBiverter::_shiftRightLogical(string number) {
+std::string clsBiverter::_shiftRightLogical(std::string number) {
 
 	if (!this->_checkValidInput(number)) {
 		return "ERROR";
